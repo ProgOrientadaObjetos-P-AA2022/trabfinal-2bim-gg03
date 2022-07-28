@@ -16,6 +16,10 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
     private double costoXgiga;
     private double pagoMensual;
 
+    public PlanPostPagoMinutosMegas() {
+
+    }
+
     public PlanPostPagoMinutosMegas(String prop, String dni, String ciu,
             String mar, String mod, String num, double min,
             double megasG) {
@@ -66,6 +70,17 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
     @Override
     public double obtenerPagoMensual() {
         return pagoMensual;
+    }
+
+    public String toString() {
+        String cadena = "";
+
+        cadena = String.format("%s\tMegas: %.2f\tMinutos: %.2f\tPago: %.2f\n",
+                super.toString(),
+                obtenerMegasGigas(),
+                obtenerMinutos(),
+                obtenerPagoMensual());
+        return cadena;
     }
 
 }

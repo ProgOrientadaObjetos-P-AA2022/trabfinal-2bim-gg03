@@ -15,6 +15,9 @@ public class PlanPostPagoMegas extends PlanCelular {
     private double tarifaBase;
     private double pagoMensual;
 
+    public PlanPostPagoMegas() {
+    }
+
     public PlanPostPagoMegas(String prop, String dni, String ciu, String mar,
             String mod, String num, double m) {
         super(prop, dni, ciu, mar, mod, num);
@@ -58,6 +61,16 @@ public class PlanPostPagoMegas extends PlanCelular {
     @Override
     public double obtenerPagoMensual() {
         return pagoMensual;
+    }
+
+    public String toString() {
+        String cadena = "";
+
+        cadena = String.format("%s\tGigas: %.2f\tPago: %.2f\n",
+                super.toString(),
+                obtenerMegas(),
+                obtenerPagoMensual());
+        return cadena;
     }
 
 }

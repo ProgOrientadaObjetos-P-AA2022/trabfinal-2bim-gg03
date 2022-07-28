@@ -4,7 +4,6 @@
  */
 package proyectofinal;
 
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -21,9 +20,7 @@ public class Ejecutor {
     }
 
     public static void planesCelular() {
-        ArrayList<PlanCelular> lista = new ArrayList();
         Enlace c = new Enlace();
-        TiposPlanes pL = new TiposPlanes();
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
 
@@ -34,7 +31,8 @@ public class Ejecutor {
                            2.POST PAGO MEGAS
                            3.POST PAGO MEGAS Y MINUTOS
                            4.POST PAGO MEGAS Y MINUTOS ECONOMICO
-                           5.Salir
+                           5.Observar datos almacenados
+                           6.Salir
                            --------------------------------------------------
                            """);
         int opcion = entrada.nextInt();
@@ -42,36 +40,85 @@ public class Ejecutor {
         switch (opcion) {
             case 1:
                 PlanPostPagoMinutos pMin = planPostPagoMinutos();
-                lista.add(pMin);
                 c.insertarInformacion2(pMin);
                 planesCelular();
                 break;
             case 2:
                 PlanPostPagoMegas pMegas = planPostPagoMegas();
-                lista.add(pMegas);
                 c.insertarInformacion(pMegas);
                 planesCelular();
                 break;
 
             case 3:
                 PlanPostPagoMinutosMegas pMinMeg = planPostPagoMinutosMegas();
-                lista.add(pMinMeg);
                 c.insertarInformacion3(pMinMeg);
                 planesCelular();
                 break;
 
             case 4:
                 PlanPostPagoMinutosMegasEconomico pMinMegEc = planPostPagoMinutosMegasEconomico();
-                lista.add(pMinMegEc);
                 c.insertarInformacion4(pMinMegEc);
                 planesCelular();
                 break;
 
             case 5:
-                pL.establecerPlanes(lista);
-                System.out.println("->Programa Finalizado por el usuario.");
-                break;
+                System.out.println("""
+                                    --------------------------------------------------
+                                   Seleccione los datos almacenados que desea 
+                                   observar
+                                    1.Planes POST PAGO MINUTOS
+                                    2.Planes POST PAGO MEGAS
+                                    3.Planes POST PAGO MEGAS Y MINUTOS
+                                    4.Planes POST PAGO MEGAS Y MINUTOS ECONOMICO
+                                    5.Volver al men\u00fa anterior.
+                                    6.Salir
+                                   --------------------------------------------------
+                                   """);
 
+                int opcion2 = entrada.nextInt();
+                switch (opcion2) {
+                    case 1:
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutos().size(); i++) {
+                            System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutos().get(i));
+                        }
+                        planesCelular();
+                        break;
+                    case 2:
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMegas().size(); i++) {
+                            System.out.printf("%s\n", c.obtenerDataPlanPostPagoMegas().get(i));
+                        }
+                        planesCelular();
+                        break;
+                    case 3:
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutosMegas().size(); i++) {
+                            System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutosMegas().get(i));
+                        }
+                        planesCelular();
+                        break;
+                    case 4:
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutosMegasEconomico()
+                                .size(); i++) {
+                            System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutosMegasEconomico().get(i));
+                        }
+                        planesCelular();
+                        break;
+                    case 5:
+                        planesCelular();
+                        break;
+
+                    case 6:
+                        System.out.println("Programa Finalizado por el usuario");
+                        break;
+
+                    default:
+                        System.out.println("Opcion no válida, ingrese nuevamente.");
+                        planesCelular();
+                        break;
+                }
+                break;
+            case 6:
+                System.out.println("Programa Finalizado por el usuario");
+                break;
             default:
                 System.out.println("Opcion no válida, ingrese nuevamente.");
                 planesCelular();
@@ -98,8 +145,10 @@ public class Ejecutor {
         System.out.println("Ingrese el total de megas utilizadas");
         double megas = entrada.nextDouble();
         entrada.nextLine();
+
         PlanPostPagoMegas p1 = new PlanPostPagoMegas(propietario, cedula, ciudad,
                 marca, modelo, numero, megas);
+        p1.calcularPagoMensual();
         return p1;
 
     }
@@ -126,6 +175,7 @@ public class Ejecutor {
         entrada.nextLine();
         PlanPostPagoMinutos p2 = new PlanPostPagoMinutos(propietario, cedula, ciudad,
                 marca, modelo, numero, minutosNacionales, minutosInternacionales);
+        p2.calcularPagoMensual();
         return p2;
 
     }
@@ -152,6 +202,7 @@ public class Ejecutor {
         entrada.nextLine();
         PlanPostPagoMinutosMegas p3 = new PlanPostPagoMinutosMegas(propietario,
                 cedula, ciudad, marca, modelo, numero, minutos, megas);
+        p3.calcularPagoMensual();
         return p3;
     }
 
@@ -179,6 +230,11 @@ public class Ejecutor {
         PlanPostPagoMinutosMegasEconomico p4
                 = new PlanPostPagoMinutosMegasEconomico(propietario,
                         cedula, ciudad, marca, modelo, numero, minutos, megas);
+        p4.calcularPagoMensual();
         return p4;
+    }
+
+    public static void visualizarDatos() {
+
     }
 }

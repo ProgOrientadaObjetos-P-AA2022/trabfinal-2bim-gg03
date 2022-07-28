@@ -16,6 +16,10 @@ public class PlanPostPagoMinutos extends PlanCelular {
     private double costoMi;
     private double pagoMensual;
 
+    public PlanPostPagoMinutos() {
+
+    }
+
     public PlanPostPagoMinutos(String prop, String dni, String ciu, String mar,
             String mod, String num, double mn, double mi) {
         super(prop, dni, ciu, mar, mod, num);
@@ -69,5 +73,16 @@ public class PlanPostPagoMinutos extends PlanCelular {
     @Override
     public double obtenerPagoMensual() {
         return pagoMensual;
+    }
+
+    public String toString() {
+        String cadena = "";
+
+        cadena = String.format("%s\tMinutosNacionales: %.2f\tMinutos Internacinales: %.2f\tPago: %.2f\n",
+                super.toString(),
+                obtenerMinutosNacionales(),
+                obtenerMinutosInternacionales(),
+                obtenerPagoMensual());
+        return cadena;
     }
 }
