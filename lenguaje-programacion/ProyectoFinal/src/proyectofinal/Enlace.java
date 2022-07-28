@@ -40,19 +40,20 @@ public class Enlace {
         return conn;
     }
 
-    public void insertarInformacion(TiposPlanes plan) {
+    public void insertarInformacion(PlanPostPagoMegas plan) {
 
         try {
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO Plan (Propietario, Cedula, Ciudad, Marca,Modelo,Numero, Pago) "
-                    + "values ('%s','%s','%s','%s','%s',%s , %.2f)",
+            String data = String.format("INSERT INTO PlanPlanPostPagoMegas (Propietario, Cedula, Ciudad, Marca,Modelo,Numero, Megas , Pago) "
+                    + "values ('%s','%s','%s','%s','%s','%s' , %s, %s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
                     plan.obtenerCiudad(),
                     plan.obtenerMarca(),
                     plan.obtenerModelo(),
                     plan.obtenerNumero(),
+                    plan.obtenerMegas(),
                     plan.obtenerPagoMensual());
             statement.executeUpdate(data);
             obtenerConexion().close();
@@ -63,8 +64,84 @@ public class Enlace {
         }
     }
 
-    public ArrayList<TiposPlanes> obtenerDataCiudad() {
-        ArrayList<TiposPlanes> lista = new ArrayList<>();
+    public void insertarInformacion2(PlanPostPagoMinutos plan) {
+
+        try {
+            establecerConexion();
+            Statement statement = obtenerConexion().createStatement();
+            String data = String.format("INSERT INTO PlanPostPagoMinutos (Propietario, Cedula, Ciudad, Marca,Modelo,Numero, Minutos Nacionales, Minutos Internacionales, Pago) "
+                    + "values ('%s','%s','%s','%s','%s','%s' , %s, %s, %s)",
+                    plan.obtenerPropietario(),
+                    plan.obtenerCedula(),
+                    plan.obtenerCiudad(),
+                    plan.obtenerMarca(),
+                    plan.obtenerModelo(),
+                    plan.obtenerNumero(),
+                    plan.obtenerMinutosNacionales(),
+                    plan.obtenerMinutosInternacionales(),
+                    plan.obtenerPagoMensual());
+            statement.executeUpdate(data);
+            obtenerConexion().close();
+        } catch (SQLException e) {
+            System.out.println("Exception: insertarPlan");
+            System.out.println(e.getMessage());
+
+        }
+    }
+
+    public void insertarInformacion3(PlanPostPagoMinutosMegas plan) {
+
+        try {
+            establecerConexion();
+            Statement statement = obtenerConexion().createStatement();
+            String data = String.format("INSERT INTO PlanPostPagoMinutosMegas (Propietario, Cedula, Ciudad, Marca,Modelo,Numero,Minutos, Megas, Pago) "
+                    + "values ('%s','%s','%s','%s','%s','%s' ,%s %s,%s)",
+                    plan.obtenerPropietario(),
+                    plan.obtenerCedula(),
+                    plan.obtenerCiudad(),
+                    plan.obtenerMarca(),
+                    plan.obtenerModelo(),
+                    plan.obtenerNumero(),
+                    plan.obtenerMinutos(),
+                    plan.obtenerMegasGigas(),
+                    plan.obtenerPagoMensual());
+            statement.executeUpdate(data);
+            obtenerConexion().close();
+        } catch (SQLException e) {
+            System.out.println("Exception: insertarPlan");
+            System.out.println(e.getMessage());
+
+        }
+    }
+
+    public void insertarInformacion4(PlanPostPagoMinutosMegasEconomico plan) {
+
+        try {
+            establecerConexion();
+            Statement statement = obtenerConexion().createStatement();
+            String data = String.format("INSERT INTO PlanPostPagoMinutosMegasEconomico (Propietario, Cedula, Ciudad, Marca,Modelo,Numero,Minutos,Megas, Descuento, Pago) "
+                    + "values ('%s','%s','%s','%s','%s','%s',%s,%s,%s,%s)",
+                    plan.obtenerPropietario(),
+                    plan.obtenerCedula(),
+                    plan.obtenerCiudad(),
+                    plan.obtenerMarca(),
+                    plan.obtenerModelo(),
+                    plan.obtenerNumero(),
+                    plan.obtenerMinutos(),
+                    plan.obtenerMegasGigas(),
+                    plan.obtenerDescuento(),
+                    plan.obtenerPagoMensual());
+            statement.executeUpdate(data);
+            obtenerConexion().close();
+        } catch (SQLException e) {
+            System.out.println("Exception: insertarPlan");
+            System.out.println(e.getMessage());
+
+        }
+    }
+
+    /*public ArrayList<PlanPostPagoMegas> obtenerDataCiudad() {
+        ArrayList<PlanPostPagoMegas> lista = new ArrayList<>();
         try {
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
@@ -72,7 +149,7 @@ public class Enlace {
 
             ResultSet rs = statement.executeQuery(data);
             while (rs.next()) {
-                PlanCelular miPlan = new PlanCelular(rs.getString("Propietario, Cedula, Ciudad, Marca,Modelo,Numero"), rs.getDouble("Pago"));
+                PlanPostPagoMegas miPlan = new PlanPostPagoMegas(rs.getString("Propietario, Cedula, Ciudad, Marca,Modelo,Numero"), rs.getDouble("Pago"));
                 lista.add(miPlan);
             }
 
@@ -83,6 +160,5 @@ public class Enlace {
 
         }
         return lista;
-    }
-
+    }*/
 }

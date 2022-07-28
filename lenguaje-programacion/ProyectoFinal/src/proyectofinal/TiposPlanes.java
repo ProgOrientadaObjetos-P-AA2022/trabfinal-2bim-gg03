@@ -12,17 +12,15 @@ import java.util.ArrayList;
  */
 public class TiposPlanes {
 
-    public class planes {
+    private ArrayList<PlanCelular> planes;
 
-        private ArrayList<PlanCelular> planes;
-
-        public void establecerPlanes(ArrayList<PlanCelular> p) {
-            planes = p;
-        }
-
-        public ArrayList<PlanCelular> obtenerPlanes() {
-            return planes;
-        }
-
+    public void establecerPlanes(ArrayList<PlanCelular> p) {
+        planes = p;
+        
     }
+
+    public ArrayList<PlanCelular> obtenerPlanes() {
+        return planes;
+    }
+
 }

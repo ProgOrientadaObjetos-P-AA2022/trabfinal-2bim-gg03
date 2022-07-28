@@ -22,50 +22,53 @@ public class Ejecutor {
 
     public static void planesCelular() {
         ArrayList<PlanCelular> lista = new ArrayList();
+        Enlace c = new Enlace();
         TiposPlanes pL = new TiposPlanes();
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
-        
-        System.out.println("--------------------------------------------------\n"
-                + "Seleccione el plan que desea crear:\n"
-                + "1.POST PAGO MINUTOS\n"
-                + "2.POST PAGO MEGAS\n"
-                + "3.POST PAGO MEGAS Y MINUTOS\n"
-                + "4.POST PAGO MEGAS Y MINUTOS ECONOMICO\n"
-                + "5.Salir\n"
-                + "--------------------------------------------------\n");
+
+        System.out.println("""
+                           --------------------------------------------------
+                           Seleccione el plan que desea crear:
+                           1.POST PAGO MINUTOS
+                           2.POST PAGO MEGAS
+                           3.POST PAGO MEGAS Y MINUTOS
+                           4.POST PAGO MEGAS Y MINUTOS ECONOMICO
+                           5.Salir
+                           --------------------------------------------------
+                           """);
         int opcion = entrada.nextInt();
-        /*if ((opcion != 1) && (opcion != 2) && (opcion != 3) && (opcion != 4) && (opcion != 5)) {
-            System.out.println("Opcion no válida, ingrese nuevamente.");
-            planesCelular();
-        } else {*/
+
         switch (opcion) {
             case 1:
                 PlanPostPagoMinutos pMin = planPostPagoMinutos();
                 lista.add(pMin);
+                c.insertarInformacion2(pMin);
                 planesCelular();
                 break;
             case 2:
-                PlanPostPagoMegas pMegas= planPostPagoMegas();
+                PlanPostPagoMegas pMegas = planPostPagoMegas();
                 lista.add(pMegas);
+                c.insertarInformacion(pMegas);
                 planesCelular();
                 break;
 
             case 3:
                 PlanPostPagoMinutosMegas pMinMeg = planPostPagoMinutosMegas();
                 lista.add(pMinMeg);
+                c.insertarInformacion3(pMinMeg);
                 planesCelular();
                 break;
 
             case 4:
-                PlanPostPagoMinutosMegasEconomico pMinMegEc = 
-                        planPostPagoMinutosMegasEconomico();
+                PlanPostPagoMinutosMegasEconomico pMinMegEc = planPostPagoMinutosMegasEconomico();
                 lista.add(pMinMegEc);
+                c.insertarInformacion4(pMinMegEc);
                 planesCelular();
                 break;
 
             case 5:
-                System.out.println(lista);
+                pL.establecerPlanes(lista);
                 System.out.println("->Programa Finalizado por el usuario.");
                 break;
 
@@ -97,7 +100,6 @@ public class Ejecutor {
         entrada.nextLine();
         PlanPostPagoMegas p1 = new PlanPostPagoMegas(propietario, cedula, ciudad,
                 marca, modelo, numero, megas);
-
         return p1;
 
     }
@@ -153,8 +155,8 @@ public class Ejecutor {
         return p3;
     }
 
-    public static PlanPostPagoMinutosMegasEconomico 
-        planPostPagoMinutosMegasEconomico() {
+    public static PlanPostPagoMinutosMegasEconomico
+            planPostPagoMinutosMegasEconomico() {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
         System.out.println("Ingrese el nombre del propietario");
@@ -173,8 +175,6 @@ public class Ejecutor {
         double minutos = entrada.nextDouble();
         System.out.println("Ingrese el total de megas Gastados");
         double megas = entrada.nextDouble();
-        System.out.println("Ingrese el porcentaje de descuento");
-        double desc = entrada.nextDouble();
         entrada.nextLine();
         PlanPostPagoMinutosMegasEconomico p4
                 = new PlanPostPagoMinutosMegasEconomico(propietario,
