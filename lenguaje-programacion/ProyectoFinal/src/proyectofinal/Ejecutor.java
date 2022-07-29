@@ -25,17 +25,14 @@ public class Ejecutor {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
 
-        System.out.println("""
-                           --------------------------------------------------
-                           Seleccione el plan que desea crear:
-                           1.POST PAGO MINUTOS
-                           2.POST PAGO MEGAS
-                           3.POST PAGO MEGAS Y MINUTOS
-                           4.POST PAGO MEGAS Y MINUTOS ECONOMICO
-                           5.Observar datos almacenados
-                           6.Salir
-                           --------------------------------------------------
-                           """);
+        System.out.println("Seleccione el plan que desea crear:\n "
+                + "1.POST PAGO MINUTOS\n"
+                + "2.POST PAGO MEGAS\n"
+                + "3.POST PAGO MEGAS Y MINUTOS\n"
+                + "4.POST PAGO MEGAS Y MINUTOS ECONOMICO\n"
+                + "5.Observar datos almacenados\n"
+                + "6.Salir\n"
+                + "--------------------------------------------------\n");
         int opcion = entrada.nextInt();
 
         switch (opcion) {
@@ -64,18 +61,14 @@ public class Ejecutor {
                 break;
 
             case 5:
-                System.out.println("""
-                                    --------------------------------------------------
-                                   Seleccione los datos almacenados que desea 
-                                   observar
-                                    1.Planes POST PAGO MINUTOS
-                                    2.Planes POST PAGO MEGAS
-                                    3.Planes POST PAGO MEGAS Y MINUTOS
-                                    4.Planes POST PAGO MEGAS Y MINUTOS ECONOMICO
-                                    5.Volver al men\u00fa anterior.
-                                    6.Salir
-                                   --------------------------------------------------
-                                   """);
+                System.out.println("Seleccione los datos almacenados que desea observar\n"
+                        + "1.Planes POST PAGO MINUTOS\n"
+                        + "2.Planes POST PAGO MEGAS\n"
+                        + "3.Planes POST PAGO MEGAS Y MINUTOS\n"
+                        + "4.Planes POST PAGO MEGAS Y MINUTOS ECONOMICO\n"
+                        + "5.Volver al menu anterior\n"
+                        + "6.Salir\n"
+                        + "--------------------------------------------------\n");
 
                 int opcion2 = entrada.nextInt();
                 switch (opcion2) {
