@@ -25,7 +25,7 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
         super(prop, dni, ciu, mar, mod, num);
         minutos = min;
         costoMn = 10;
-        megasGigas = megasG;
+        megasGigas = megasG/1024;
         costoXgiga = 1;
     }
 
@@ -38,7 +38,7 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
     }
 
     public void establecerMegasEnGigas(double mG) {
-        megasGigas = mG / 100;
+        megasGigas = mG / 1024;
     }
 
     public void establecerCostoPorGiga(double cosG) {

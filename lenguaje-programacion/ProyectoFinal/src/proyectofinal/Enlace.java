@@ -194,8 +194,10 @@ public class Enlace {
                 p1.establecerMarca(rs.getString("Marca"));
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
-                p1.establecerMinutosNacionales(rs.getDouble("MinutosNacionales"));
-                p1.establecerMinutosInternacionales(rs.getDouble("MinutosInternacionales"));
+                p1.establecerMinutosNacionales(rs.getDouble(""
+                        + "MinutosNacionales"));
+                p1.establecerMinutosInternacionales(rs.getDouble(""
+                        + "MinutosInternacionales"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
@@ -209,7 +211,8 @@ public class Enlace {
         return lista;
     }
 
-    public ArrayList<PlanPostPagoMinutosMegas> obtenerDataPlanPostPagoMinutosMegas() {
+    public ArrayList<PlanPostPagoMinutosMegas> 
+        obtenerDataPlanPostPagoMinutosMegas() {
         ArrayList<PlanPostPagoMinutosMegas> lista = new ArrayList<>();
         try {
             establecerConexion();
@@ -240,7 +243,8 @@ public class Enlace {
         return lista;
     }
 
-    public ArrayList<PlanPostPagoMinutosMegasEconomico> obtenerDataPlanPostPagoMinutosMegasEconomico() {
+    public ArrayList<PlanPostPagoMinutosMegasEconomico> 
+        obtenerDataPlanPostPagoMinutosMegasEconomico() {
         ArrayList<PlanPostPagoMinutosMegasEconomico> lista = new ArrayList<>();
         try {
             establecerConexion();
@@ -249,7 +253,8 @@ public class Enlace {
 
             ResultSet rs = statement.executeQuery(data);
             while (rs.next()) {
-                PlanPostPagoMinutosMegasEconomico p1 = new PlanPostPagoMinutosMegasEconomico();
+                PlanPostPagoMinutosMegasEconomico p1 = new 
+        PlanPostPagoMinutosMegasEconomico();
                 p1.establecerPropietario(rs.getString("Propietario"));
                 p1.establecerCedula(rs.getString("Cedula"));
                 p1.establecerCiudad(rs.getString("Ciudad"));

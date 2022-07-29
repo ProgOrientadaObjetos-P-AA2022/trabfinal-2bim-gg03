@@ -14,7 +14,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     private double costoMn;
     private double megasGigas;
     private double costoXgiga;
-    private int porcentajeDesc = 10;
+    private int porcentajeDesc;
 
     public PlanPostPagoMinutosMegasEconomico() {
 
@@ -25,7 +25,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         super(prop, dni, ciu, mar, mod, num);
         minutos = min;
         costoMn = 0.10;
-        megasGigas = megasG;
+        megasGigas = megasG/1024;
         costoXgiga = 1;
         porcentajeDesc = 10;
     }

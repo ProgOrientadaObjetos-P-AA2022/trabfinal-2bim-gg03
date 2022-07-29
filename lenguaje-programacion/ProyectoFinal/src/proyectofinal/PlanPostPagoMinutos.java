@@ -66,7 +66,8 @@ public class PlanPostPagoMinutos extends PlanCelular {
 
     @Override
     public void calcularPagoMensual() {
-        pagoMensual = (minutosNacionales * costoMn) + (minutosInternacionales * costoMi);
+        pagoMensual = (minutosNacionales * costoMn) + 
+                (minutosInternacionales * costoMi);
     }
     
     public void establecerPagoMensual(double pagoMensual){
