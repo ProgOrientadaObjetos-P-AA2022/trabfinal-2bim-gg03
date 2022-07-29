@@ -21,17 +21,18 @@ public class PlanPostPagoMegas extends PlanCelular {
     public PlanPostPagoMegas(String prop, String dni, String ciu, String mar,
             String mod, String num, double m) {
         super(prop, dni, ciu, mar, mod, num);
-        megas = m / 1000;
-        costoXgigas = 1;
-        tarifaBase = 15;
+        megas = m;
+        gigas = megas /1000;
+        costoXgigas = 1.5;
+        tarifaBase = 7;
     }
 
     public void establecerMegas(double m) {
         megas = m;
     }
 
-    public void establecerGigas(double megas) {
-        gigas = (megas / 1000);
+    public void establecerGigas(double g) {
+        gigas = g;
     }
 
     public void establecerCostoporGigas(double cxg) {

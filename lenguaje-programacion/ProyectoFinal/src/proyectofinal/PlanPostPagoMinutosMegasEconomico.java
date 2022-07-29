@@ -25,9 +25,10 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
             String mar, String mod, String num, double min, double m) {
         super(prop, dni, ciu, mar, mod, num);
         minutos = min;
-        costoMn = 0.10;
+        costoMn = 0.15;
         megas = m;
-        costoXgiga = 1;
+        gigas = megas/1000;
+        costoXgiga = 1.5;
         porcentajeDesc = 10;
     }
 
@@ -47,8 +48,8 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         megas = m;
     }
 
-    public void establecerGigas(double megas) {
-        gigas = (megas / 1000);
+    public void establecerGigas(double g) {
+        gigas = g;
     }
 
     public void establecerCostoPorGiga() {
@@ -83,7 +84,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     public void calcularPagoMensual() {
         double suma;
         suma = (minutos * costoMn) + (gigas * costoXgiga);
-        pagoMensual = (suma * porcentajeDesc) / 100;
+        pagoMensual = suma -(suma * porcentajeDesc) / 100;
     }
 
     public void establecerPagoMensual(double pagoMensual) {

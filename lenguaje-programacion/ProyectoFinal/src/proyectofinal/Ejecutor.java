@@ -25,7 +25,8 @@ public class Ejecutor {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
 
-        System.out.println("Seleccione el plan que desea crear:\n "
+        System.out.println("--------------------------------------------------\n"
+                + "Seleccione el plan que desea crear:\n"
                 + "1.POST PAGO MINUTOS\n"
                 + "2.POST PAGO MEGAS\n"
                 + "3.POST PAGO MEGAS Y MINUTOS\n"
@@ -61,8 +62,10 @@ public class Ejecutor {
                 break;
 
             case 5:
-                System.out.println("Seleccione los datos almacenados que desea observar\n"
-                        + "1.Planes POST PAGO MINUTOS\n"
+                System.out.println(""
+                        + "--------------------------------------------------\n"
+                        + "Seleccione los datos almacenados que desea"
+                        + "observar\n1.Planes POST PAGO MINUTOS\n"
                         + "2.Planes POST PAGO MEGAS\n"
                         + "3.Planes POST PAGO MEGAS Y MINUTOS\n"
                         + "4.Planes POST PAGO MEGAS Y MINUTOS ECONOMICO\n"
@@ -103,6 +106,33 @@ public class Ejecutor {
                         break;
 
                     case 6:
+                        System.out.println("Datos Almacenados en la base de datos:");
+                        for (int i = 0; i
+                                < c.obtenerDataPlanPostPagoMinutos().size(); i++) {
+                            System.out.printf("%s\n",
+                                    c.obtenerDataPlanPostPagoMinutos().get(i));
+                        }
+
+                        for (int i = 0; i
+                                < c.obtenerDataPlanPostPagoMegas().size(); i++) {
+                            System.out.printf("%s\n",
+                                    c.obtenerDataPlanPostPagoMegas().get(i));
+                        }
+
+                        for (int i = 0; i
+                                < c.obtenerDataPlanPostPagoMinutosMegas().size();
+                                i++) {
+
+                            System.out.printf("%s\n",
+                                    c.obtenerDataPlanPostPagoMinutosMegas().get(i));
+                        }
+
+                        for (int i = 0; i
+                                < c.obtenerDataPlanPostPagoMinutosMegasEconomico().size(); i++) {
+
+                            System.out.printf("%s\n",
+                                    c.obtenerDataPlanPostPagoMinutosMegasEconomico().get(i));
+                        }
                         System.out.println("Programa Finalizado por el usuario");
                         break;
 
@@ -113,6 +143,32 @@ public class Ejecutor {
                 }
                 break;
             case 6:
+                for (int i = 0; i
+                        < c.obtenerDataPlanPostPagoMinutos().size(); i++) {
+                    System.out.printf("%s\n",
+                            c.obtenerDataPlanPostPagoMinutos().get(i));
+                }
+
+                for (int i = 0; i
+                        < c.obtenerDataPlanPostPagoMegas().size(); i++) {
+                    System.out.printf("%s\n",
+                            c.obtenerDataPlanPostPagoMegas().get(i));
+                }
+
+                for (int i = 0; i
+                        < c.obtenerDataPlanPostPagoMinutosMegas().size();
+                        i++) {
+
+                    System.out.printf("%s\n",
+                            c.obtenerDataPlanPostPagoMinutosMegas().get(i));
+                }
+
+                for (int i = 0; i
+                        < c.obtenerDataPlanPostPagoMinutosMegasEconomico().size(); i++) {
+
+                    System.out.printf("%s\n",
+                            c.obtenerDataPlanPostPagoMinutosMegasEconomico().get(i));
+                }
                 System.out.println("Programa Finalizado por el usuario");
                 break;
             default:

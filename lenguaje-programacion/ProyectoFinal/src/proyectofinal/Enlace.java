@@ -47,7 +47,7 @@ public class Enlace {
             Statement statement = obtenerConexion().createStatement();
             String data = String.format("INSERT INTO PlanPostPagoMegas "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero, "
-                    + "Gigas , Pago) "
+                    + "Megas, Gigas, Pago) "
                     + "values ('%s','%s','%s','%s','%s','%s' ,%s, %s, %s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
@@ -101,7 +101,7 @@ public class Enlace {
             Statement statement = obtenerConexion().createStatement();
             String data = String.format("INSERT INTO PlanPostPagoMinutosMegas "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
-                    + "Minutos, Gigas, Pago) "
+                    + "Minutos, Megas, Gigas, Pago) "
                     + "values ('%s','%s','%s','%s','%s','%s',%s,%s, %s,%s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
@@ -130,7 +130,7 @@ public class Enlace {
             String data = String.format("INSERT INTO "
                     + "PlanPostPagoMinutosMegasEconomico "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
-                    + "Minutos,Gigas,Descuento,Pago) "
+                    + "Minutos, Megas, Gigas,Descuento,Pago) "
                     + "values ('%s','%s','%s','%s','%s','%s',%s,%s,%s,%s,%s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
@@ -169,7 +169,7 @@ public class Enlace {
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMegas(rs.getDouble("Megas"));
-                p1.establecerGigas(rs.getDouble("Megas"));
+                p1.establecerGigas(rs.getDouble("Gigas"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
@@ -234,7 +234,7 @@ public class Enlace {
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMegas(rs.getDouble("Megas"));
-                p1.establecerGigas(rs.getDouble("Megas"));
+                p1.establecerGigas(rs.getDouble("Gigas"));
                 p1.establecerMinutos(rs.getDouble("Minutos"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
@@ -267,7 +267,7 @@ public class Enlace {
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMegas(rs.getDouble("Megas"));
-                p1.establecerGigas(rs.getDouble("Megas"));
+                p1.establecerGigas(rs.getDouble("Gigas"));
                 p1.establecerMinutos(rs.getDouble("Minutos"));
                 p1.establecerDescuento(rs.getInt("Descuento"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));

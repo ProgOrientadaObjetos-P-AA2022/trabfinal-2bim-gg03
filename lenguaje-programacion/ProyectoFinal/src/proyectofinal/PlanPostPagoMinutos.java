@@ -23,9 +23,9 @@ public class PlanPostPagoMinutos extends PlanCelular {
             String mod, String num, double mn, double mi) {
         super(prop, dni, ciu, mar, mod, num);
         minutosNacionales = mn;
-        costoMn = 1.00;
+        costoMn = 0.15;
         minutosInternacionales = mi;
-        costoMi = 3.00;
+        costoMi = 0.99;
     }
 
     public void establecerMinutosNacionales(double mn) {
