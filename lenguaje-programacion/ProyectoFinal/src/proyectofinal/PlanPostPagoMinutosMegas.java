@@ -82,5 +82,4 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
                 obtenerPagoMensual());
         return cadena;
     }
-
 }

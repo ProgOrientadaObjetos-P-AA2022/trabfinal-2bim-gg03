@@ -101,7 +101,7 @@ public class Enlace {
             String data = String.format("INSERT INTO PlanPostPagoMinutosMegas "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
                     + "Minutos, Gigas, Pago) "
-                    + "values ('%s','%s','%s','%s','%s','%s' ,%s %s,%s)",
+                    + "values ('%s','%s','%s','%s','%s','%s' ,%s, %s,%s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
                     plan.obtenerCiudad(),

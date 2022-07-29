@@ -39,6 +39,7 @@ public class Ejecutor {
 
         switch (opcion) {
             case 1:
+
                 PlanPostPagoMinutos pMin = planPostPagoMinutos();
                 pMin.calcularPagoMensual();
                 c.insertarInformacion2(pMin);
@@ -82,28 +83,28 @@ public class Ejecutor {
                 int opcion2 = entrada.nextInt();
                 switch (opcion2) {
                     case 1:
-                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutos().size(); i++) {
-                            
+
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutos().size(); i++) {  
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutos().get(i));
                         }
                         planesCelular();
                         break;
                     case 2:
                         for (int i = 0; i < c.obtenerDataPlanPostPagoMegas().size(); i++) {
-                            
+
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMegas().get(i));
                         }
                         planesCelular();
                         break;
                     case 3:
                         for (int i = 0; i < c.obtenerDataPlanPostPagoMinutosMegas().size(); i++) {
+
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutosMegas().get(i));
                         }
                         planesCelular();
                         break;
                     case 4:
-                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutosMegasEconomico()
-                                .size(); i++) {
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutosMegasEconomico().size(); i++) {
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutosMegasEconomico().get(i));
                         }
                         planesCelular();
