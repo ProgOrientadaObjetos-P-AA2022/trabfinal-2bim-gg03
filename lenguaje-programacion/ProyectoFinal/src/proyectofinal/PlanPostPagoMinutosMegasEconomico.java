@@ -34,8 +34,8 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         minutos = mn;
     }
 
-    public void establecerDescuento(int p) {
-        porcentajeDesc = 10;
+    public void establecerDescuento(int porcentajeDesc) {
+        this.porcentajeDesc = porcentajeDesc;
     }
 
     public void establecerCostoMinutos() {

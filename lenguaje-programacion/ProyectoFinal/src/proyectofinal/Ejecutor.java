@@ -237,7 +237,4 @@ public class Ejecutor {
         return p4;
     }
 
-    public static void visualizarDatos() {
-
-    }
 }

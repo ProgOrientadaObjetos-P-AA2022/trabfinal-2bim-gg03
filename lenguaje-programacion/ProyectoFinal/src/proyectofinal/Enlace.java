@@ -245,7 +245,7 @@ public class Enlace {
         try {
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = "Select * from PlanPostPagoMinutosMegas;";
+            String data = "Select * from PlanPostPagoMinutosMegasEconomico;";
 
             ResultSet rs = statement.executeQuery(data);
             while (rs.next()) {
