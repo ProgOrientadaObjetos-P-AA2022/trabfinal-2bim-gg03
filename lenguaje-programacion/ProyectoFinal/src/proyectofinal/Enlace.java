@@ -127,7 +127,7 @@ public class Enlace {
             Statement statement = obtenerConexion().createStatement();
             String data = String.format("INSERT INTO PlanPostPagoMinutosMegasEconomico "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
-                    + "Minutos,Gigas, Descuento, Pago) "
+                    + "Minutos,Gigas,Descuento,Pago) "
                     + "values ('%s','%s','%s','%s','%s','%s',%s,%s,%s,%s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
@@ -165,7 +165,7 @@ public class Enlace {
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMegas(rs.getDouble("Gigas"));
-                p1.calcularPagoMensual();
+                p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
 
@@ -196,7 +196,7 @@ public class Enlace {
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMinutosNacionales(rs.getDouble("MinutosNacionales"));
                 p1.establecerMinutosInternacionales(rs.getDouble("MinutosInternacionales"));
-                p1.calcularPagoMensual();
+                p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
 
@@ -227,7 +227,7 @@ public class Enlace {
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMegasEnGigas(rs.getDouble("Gigas"));
                 p1.establecerMinutos(rs.getDouble("Minutos"));
-                p1.calcularPagoMensual();
+                p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
 
@@ -258,9 +258,8 @@ public class Enlace {
                 p1.establecerNumero(rs.getString("Numero"));
                 p1.establecerMegasEnGigas(rs.getDouble("Gigas"));
                 p1.establecerMinutos(rs.getDouble("Minutos"));
-                p1.establecerDescuento();
-
-                p1.calcularPagoMensual();
+                p1.establecerDescuento(rs.getInt("Descuento"));
+                p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
 

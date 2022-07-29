@@ -66,6 +66,10 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
         pagoMensual = (minutos * costoMn) + (megasGigas * costoXgiga);
     }
 
+    public void establecerPagoMensual(double pagoMensual) {
+        this.pagoMensual = pagoMensual;
+    }
+
     @Override
     public double obtenerPagoMensual() {
         return pagoMensual;

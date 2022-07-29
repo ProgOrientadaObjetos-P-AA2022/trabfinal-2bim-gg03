@@ -21,7 +21,7 @@ public class PlanPostPagoMegas extends PlanCelular {
             String mod, String num, double m) {
         super(prop, dni, ciu, mar, mod, num);
         megas = m;
-        costoXgigas = 1.00;
+        costoXgigas = 1;
         tarifaBase = 15;
     }
 
@@ -54,7 +54,11 @@ public class PlanPostPagoMegas extends PlanCelular {
 
     @Override
     public void calcularPagoMensual() {
-        pagoMensual = tarifaBase + (megas * costoXgigas);
+        pagoMensual = tarifaBase + (obtenerMegas() * costoXgigas);
+    }
+
+    public void establecerPagoMensual(double pagoMensual) {
+        this.pagoMensual = pagoMensual;
     }
 
     @Override

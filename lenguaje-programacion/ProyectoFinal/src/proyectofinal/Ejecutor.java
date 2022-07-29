@@ -21,6 +21,7 @@ public class Ejecutor {
 
     public static void planesCelular() {
         Enlace c = new Enlace();
+
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
 
@@ -41,27 +42,23 @@ public class Ejecutor {
             case 1:
 
                 PlanPostPagoMinutos pMin = planPostPagoMinutos();
-                pMin.calcularPagoMensual();
                 c.insertarInformacion2(pMin);
                 planesCelular();
                 break;
             case 2:
                 PlanPostPagoMegas pMegas = planPostPagoMegas();
-                pMegas.calcularPagoMensual();
                 c.insertarInformacion(pMegas);
                 planesCelular();
                 break;
 
             case 3:
                 PlanPostPagoMinutosMegas pMinMeg = planPostPagoMinutosMegas();
-                pMinMeg.calcularPagoMensual();
                 c.insertarInformacion3(pMinMeg);
                 planesCelular();
                 break;
 
             case 4:
                 PlanPostPagoMinutosMegasEconomico pMinMegEc = planPostPagoMinutosMegasEconomico();
-                pMinMegEc.calcularPagoMensual();
                 c.insertarInformacion4(pMinMegEc);
                 planesCelular();
                 break;
@@ -83,7 +80,6 @@ public class Ejecutor {
                 int opcion2 = entrada.nextInt();
                 switch (opcion2) {
                     case 1:
-
                         for (int i = 0; i < c.obtenerDataPlanPostPagoMinutos().size(); i++) {
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutos().get(i));
                         }
@@ -91,7 +87,6 @@ public class Ejecutor {
                         break;
                     case 2:
                         for (int i = 0; i < c.obtenerDataPlanPostPagoMegas().size(); i++) {
-
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMegas().get(i));
                         }
                         planesCelular();
@@ -105,6 +100,7 @@ public class Ejecutor {
                         break;
                     case 4:
                         for (int i = 0; i < c.obtenerDataPlanPostPagoMinutosMegasEconomico().size(); i++) {
+
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutosMegasEconomico().get(i));
                         }
                         planesCelular();

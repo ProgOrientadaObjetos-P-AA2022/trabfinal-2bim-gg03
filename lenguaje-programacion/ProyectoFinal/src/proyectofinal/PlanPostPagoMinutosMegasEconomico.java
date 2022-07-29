@@ -14,7 +14,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     private double costoMn;
     private double megasGigas;
     private double costoXgiga;
-    private int porcentajeDesc;
+    private int porcentajeDesc = 10;
 
     public PlanPostPagoMinutosMegasEconomico() {
 
@@ -34,7 +34,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         minutos = mn;
     }
 
-    public void establecerDescuento() {
+    public void establecerDescuento(int p) {
         porcentajeDesc = 10;
     }
 
@@ -43,15 +43,11 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     }
 
     public void establecerMegasEnGigas(double mG) {
-        megasGigas = mG / 100;
+        megasGigas = mG / 1024;
     }
 
     public void establecerCostoPorGiga() {
         costoXgiga = 1;
-    }
-
-    public void establecerPorcentajeDescuento() {
-        porcentajeDesc = 10;
     }
 
     public double obtenerMinutos() {
@@ -78,7 +74,11 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     public void calcularPagoMensual() {
         double suma;
         suma = (minutos * costoMn) + (megasGigas * costoXgiga);
-        pagoMensual = suma * (porcentajeDesc / 100);
+        pagoMensual = (suma * porcentajeDesc) / 100;
+    }
+
+    public void establecerPagoMensual(double pagoMensual) {
+        this.pagoMensual = pagoMensual;
     }
 
     @Override
@@ -89,7 +89,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     public String toString() {
         String cadena = "";
 
-        cadena = String.format("%s\tMegas: %.2f\tMinutos: %.2f\tPago: %.2f\n",
+        cadena = String.format("%s\tMegas: %.2f\tMinutos: %.2f\tDescuento: %d\tPago: %.2f\n",
                 super.toString(),
                 obtenerMegasGigas(),
                 obtenerMinutos(),
