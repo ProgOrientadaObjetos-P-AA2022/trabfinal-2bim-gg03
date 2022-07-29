@@ -13,6 +13,7 @@ public class PlanPostPagoMegas extends PlanCelular {
     private double megas;
     private double costoXgigas;
     private double tarifaBase;
+    private double gigas;
 
     public PlanPostPagoMegas() {
     }
@@ -27,6 +28,10 @@ public class PlanPostPagoMegas extends PlanCelular {
 
     public void establecerMegas(double m) {
         megas = (m / 1000);
+    }
+    
+    public void establecerGigas(double g){
+        gigas = g;
     }
 
     public void establecerCostoporGigas(double cxg) {
@@ -45,6 +50,11 @@ public class PlanPostPagoMegas extends PlanCelular {
     public double obtenerMegas() {
 
         return megas;
+    }
+    
+    public double obtenerGigas() {
+
+        return gigas;
     }
 
     public double obtenerTarifaBase() {
@@ -71,7 +81,7 @@ public class PlanPostPagoMegas extends PlanCelular {
 
         cadena = String.format("%s\tGigas: %.2f\tPago: %.2f\n",
                 super.toString(),
-                obtenerMegas(),
+                obtenerGigas(),
                 obtenerPagoMensual());
         return cadena;
     }

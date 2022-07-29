@@ -125,7 +125,8 @@ public class Enlace {
         try {
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO PlanPostPagoMinutosMegasEconomico "
+            String data = String.format("INSERT INTO "
+                    + "PlanPostPagoMinutosMegasEconomico "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
                     + "Minutos,Gigas,Descuento,Pago) "
                     + "values ('%s','%s','%s','%s','%s','%s',%s,%s,%s,%s)",
@@ -164,7 +165,7 @@ public class Enlace {
                 p1.establecerMarca(rs.getString("Marca"));
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
-                p1.establecerMegas(rs.getDouble("Gigas"));
+                p1.establecerGigas(rs.getDouble("Gigas"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
