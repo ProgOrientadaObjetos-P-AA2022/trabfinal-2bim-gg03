@@ -14,7 +14,6 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
     private double costoMn;
     private double megasGigas;
     private double costoXgiga;
-    private double pagoMensual;
 
     public PlanPostPagoMinutosMegas() {
 

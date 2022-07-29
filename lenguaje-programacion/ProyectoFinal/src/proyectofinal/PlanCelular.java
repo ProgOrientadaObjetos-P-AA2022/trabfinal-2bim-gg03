@@ -16,6 +16,7 @@ public abstract class PlanCelular {
     protected String marca;
     protected String modelo;
     protected String numero;
+    protected double pagoMensual;
 
     public PlanCelular() {
 

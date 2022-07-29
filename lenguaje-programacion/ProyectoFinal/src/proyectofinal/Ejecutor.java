@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author josti
+ * @author Jostin Alvarado - Edgar Espinoza
  */
 public class Ejecutor {
 
@@ -84,7 +84,7 @@ public class Ejecutor {
                 switch (opcion2) {
                     case 1:
 
-                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutos().size(); i++) {  
+                        for (int i = 0; i < c.obtenerDataPlanPostPagoMinutos().size(); i++) {
                             System.out.printf("%s\n", c.obtenerDataPlanPostPagoMinutos().get(i));
                         }
                         planesCelular();
