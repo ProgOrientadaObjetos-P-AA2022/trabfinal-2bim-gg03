@@ -12,7 +12,8 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
 
     private double minutos;
     private double costoMn;
-    private double megasGigas;
+    private double megas;
+    private double gigas;
     private double costoXgiga;
     private int porcentajeDesc;
 
@@ -21,11 +22,11 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     }
 
     public PlanPostPagoMinutosMegasEconomico(String prop, String dni, String ciu,
-            String mar, String mod, String num, double min, double megasG) {
+            String mar, String mod, String num, double min, double m) {
         super(prop, dni, ciu, mar, mod, num);
         minutos = min;
         costoMn = 0.10;
-        megasGigas = megasG/1024;
+        megas = m;
         costoXgiga = 1;
         porcentajeDesc = 10;
     }
@@ -42,8 +43,12 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         costoMn = 0.10;
     }
 
-    public void establecerMegasEnGigas(double mG) {
-        megasGigas = mG / 1024;
+    public void establecerMegas(double m) {
+        megas = m;
+    }
+
+    public void establecerGigas(double megas) {
+        gigas = (megas / 1000);
     }
 
     public void establecerCostoPorGiga() {
@@ -62,8 +67,12 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         return porcentajeDesc;
     }
 
-    public double obtenerMegasGigas() {
-        return megasGigas;
+    public double obtenerMegas() {
+        return megas;
+    }
+
+    public double obtenerGigas() {
+        return gigas;
     }
 
     public double obtenerCostoXgiga() {
@@ -73,7 +82,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     @Override
     public void calcularPagoMensual() {
         double suma;
-        suma = (minutos * costoMn) + (megasGigas * costoXgiga);
+        suma = (minutos * costoMn) + (gigas * costoXgiga);
         pagoMensual = (suma * porcentajeDesc) / 100;
     }
 
@@ -89,10 +98,11 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     public String toString() {
         String cadena = "";
 
-        cadena = String.format("%s\tMegas: %.2f\tMinutos: %.2f\tDescuento: %d\t"
+        cadena = String.format("%s\tMegas: %.2f\tGigas: %.2f\tMinutos: %.2f\tDescuento: %d\t"
                 + "Pago: %.2f\n",
                 super.toString(),
-                obtenerMegasGigas(),
+                obtenerMegas(),
+                obtenerGigas(),
                 obtenerMinutos(),
                 obtenerDescuento(),
                 obtenerPagoMensual());

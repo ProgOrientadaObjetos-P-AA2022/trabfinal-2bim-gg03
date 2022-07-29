@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Enlace {
 
     /**
-     * Connect to a sample database
-     *rf
+     * Connect to a sample database rf
+     *
      * @return
      */
     private Connection conn;
@@ -48,7 +48,7 @@ public class Enlace {
             String data = String.format("INSERT INTO PlanPostPagoMegas "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero, "
                     + "Gigas , Pago) "
-                    + "values ('%s','%s','%s','%s','%s','%s' , %s, %s)",
+                    + "values ('%s','%s','%s','%s','%s','%s' ,%s, %s, %s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
                     plan.obtenerCiudad(),
@@ -56,6 +56,7 @@ public class Enlace {
                     plan.obtenerModelo(),
                     plan.obtenerNumero(),
                     plan.obtenerMegas(),
+                    plan.obtenerGigas(),
                     plan.obtenerPagoMensual());
             statement.executeUpdate(data);
             obtenerConexion().close();
@@ -101,7 +102,7 @@ public class Enlace {
             String data = String.format("INSERT INTO PlanPostPagoMinutosMegas "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
                     + "Minutos, Gigas, Pago) "
-                    + "values ('%s','%s','%s','%s','%s','%s' ,%s, %s,%s)",
+                    + "values ('%s','%s','%s','%s','%s','%s',%s,%s, %s,%s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
                     plan.obtenerCiudad(),
@@ -109,7 +110,8 @@ public class Enlace {
                     plan.obtenerModelo(),
                     plan.obtenerNumero(),
                     plan.obtenerMinutos(),
-                    plan.obtenerMegasGigas(),
+                    plan.obtenerMegas(),
+                    plan.obtenerGigas(),
                     plan.obtenerPagoMensual());
             statement.executeUpdate(data);
             obtenerConexion().close();
@@ -129,7 +131,7 @@ public class Enlace {
                     + "PlanPostPagoMinutosMegasEconomico "
                     + "(Propietario, Cedula, Ciudad, Marca,Modelo,Numero,"
                     + "Minutos,Gigas,Descuento,Pago) "
-                    + "values ('%s','%s','%s','%s','%s','%s',%s,%s,%s,%s)",
+                    + "values ('%s','%s','%s','%s','%s','%s',%s,%s,%s,%s,%s)",
                     plan.obtenerPropietario(),
                     plan.obtenerCedula(),
                     plan.obtenerCiudad(),
@@ -137,7 +139,8 @@ public class Enlace {
                     plan.obtenerModelo(),
                     plan.obtenerNumero(),
                     plan.obtenerMinutos(),
-                    plan.obtenerMegasGigas(),
+                    plan.obtenerMegas(),
+                    plan.obtenerGigas(),
                     plan.obtenerDescuento(),
                     plan.obtenerPagoMensual());
             statement.executeUpdate(data);
@@ -165,7 +168,8 @@ public class Enlace {
                 p1.establecerMarca(rs.getString("Marca"));
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
-                p1.establecerGigas(rs.getDouble("Gigas"));
+                p1.establecerMegas(rs.getDouble("Megas"));
+                p1.establecerGigas(rs.getDouble("Megas"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
             }
@@ -212,8 +216,8 @@ public class Enlace {
         return lista;
     }
 
-    public ArrayList<PlanPostPagoMinutosMegas> 
-        obtenerDataPlanPostPagoMinutosMegas() {
+    public ArrayList<PlanPostPagoMinutosMegas>
+            obtenerDataPlanPostPagoMinutosMegas() {
         ArrayList<PlanPostPagoMinutosMegas> lista = new ArrayList<>();
         try {
             establecerConexion();
@@ -229,7 +233,8 @@ public class Enlace {
                 p1.establecerMarca(rs.getString("Marca"));
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
-                p1.establecerMegasEnGigas(rs.getDouble("Gigas"));
+                p1.establecerMegas(rs.getDouble("Megas"));
+                p1.establecerGigas(rs.getDouble("Megas"));
                 p1.establecerMinutos(rs.getDouble("Minutos"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));
                 lista.add(p1);
@@ -244,8 +249,8 @@ public class Enlace {
         return lista;
     }
 
-    public ArrayList<PlanPostPagoMinutosMegasEconomico> 
-        obtenerDataPlanPostPagoMinutosMegasEconomico() {
+    public ArrayList<PlanPostPagoMinutosMegasEconomico>
+            obtenerDataPlanPostPagoMinutosMegasEconomico() {
         ArrayList<PlanPostPagoMinutosMegasEconomico> lista = new ArrayList<>();
         try {
             establecerConexion();
@@ -254,15 +259,15 @@ public class Enlace {
 
             ResultSet rs = statement.executeQuery(data);
             while (rs.next()) {
-                PlanPostPagoMinutosMegasEconomico p1 = new 
-        PlanPostPagoMinutosMegasEconomico();
+                PlanPostPagoMinutosMegasEconomico p1 = new PlanPostPagoMinutosMegasEconomico();
                 p1.establecerPropietario(rs.getString("Propietario"));
                 p1.establecerCedula(rs.getString("Cedula"));
                 p1.establecerCiudad(rs.getString("Ciudad"));
                 p1.establecerMarca(rs.getString("Marca"));
                 p1.establecerModelo(rs.getString("Modelo"));
                 p1.establecerNumero(rs.getString("Numero"));
-                p1.establecerMegasEnGigas(rs.getDouble("Gigas"));
+                p1.establecerMegas(rs.getDouble("Megas"));
+                p1.establecerGigas(rs.getDouble("Megas"));
                 p1.establecerMinutos(rs.getDouble("Minutos"));
                 p1.establecerDescuento(rs.getInt("Descuento"));
                 p1.establecerPagoMensual(rs.getDouble("Pago"));

@@ -12,8 +12,9 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
 
     private double minutos;
     private double costoMn;
-    private double megasGigas;
+    private double megas;
     private double costoXgiga;
+    private double gigas;
 
     public PlanPostPagoMinutosMegas() {
 
@@ -21,11 +22,11 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
 
     public PlanPostPagoMinutosMegas(String prop, String dni, String ciu,
             String mar, String mod, String num, double min,
-            double megasG) {
+            double m) {
         super(prop, dni, ciu, mar, mod, num);
         minutos = min;
         costoMn = 10;
-        megasGigas = megasG/1024;
+        megas = m;
         costoXgiga = 1;
     }
 
@@ -37,8 +38,12 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
         costoMn = cosMn;
     }
 
-    public void establecerMegasEnGigas(double mG) {
-        megasGigas = mG / 1024;
+    public void establecerMegas(double m) {
+        megas = m;
+    }
+
+    public void establecerGigas(double megas) {
+        gigas = (megas / 1000);
     }
 
     public void establecerCostoPorGiga(double cosG) {
@@ -53,8 +58,12 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
         return costoMn;
     }
 
-    public double obtenerMegasGigas() {
-        return megasGigas;
+    public double obtenerMegas() {
+        return megas;
+    }
+
+    public double obtenerGigas() {
+        return gigas;
     }
 
     public double obtenerCostoXgiga() {
@@ -63,7 +72,7 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
 
     @Override
     public void calcularPagoMensual() {
-        pagoMensual = (minutos * costoMn) + (megasGigas * costoXgiga);
+        pagoMensual = (minutos * costoMn) + (gigas * costoXgiga);
     }
 
     public void establecerPagoMensual(double pagoMensual) {
@@ -78,9 +87,10 @@ public class PlanPostPagoMinutosMegas extends PlanCelular {
     public String toString() {
         String cadena = "";
 
-        cadena = String.format("%s\tMegas: %.2f\tMinutos: %.2f\tPago: %.2f\n",
+        cadena = String.format("%s\tMegas: %.2f\tGigas: %.2f\tMinutos: %.2f\tPago: %.2f\n",
                 super.toString(),
-                obtenerMegasGigas(),
+                obtenerMegas(),
+                obtenerGigas(),
                 obtenerMinutos(),
                 obtenerPagoMensual());
         return cadena;
